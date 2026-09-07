@@ -10,8 +10,6 @@ extends Node2D
 @onready var win_subtitle_label: Label = $WinSubtitleLabel
 @onready var background: ColorRect = $Background
 
-const WIN_SCORE := 11
-
 var score1 := 0
 var score2 := 0
 var game_over := false
@@ -38,7 +36,7 @@ func on_goal(scorer: int) -> void:
 	score_label2.text = str(score2)
 	score_sound.play()
 
-	if score1 >= WIN_SCORE or score2 >= WIN_SCORE:
+	if not Controls.endless_mode and (score1 >= Controls.win_score or score2 >= Controls.win_score):
 		game_over = true
 		win_label.text = "Player %d Wins!" % scorer
 		win_label.show()

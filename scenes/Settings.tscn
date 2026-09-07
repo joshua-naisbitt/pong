@@ -23,289 +23,348 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 horizontal_scroll_mode = 0
 
-[node name="CenterContainer" type="CenterContainer" parent="ScrollContainer"]
+[node name="ContentMargin" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+anchor_right = 1.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_bottom = 8
+
+[node name="CenterContainer" type="CenterContainer" parent="ScrollContainer/ContentMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
-anchor_right = 1.0
 
-[node name="Layout" type="HBoxContainer" parent="ScrollContainer/CenterContainer"]
+[node name="Layout" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 48
+theme_override_constants/separation = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/CenterContainer/Layout"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 26
 horizontal_alignment = 1
 text = "Settings"
 
-[node name="ControlsRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="ControlsRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 40
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
 
-[node name="Player1Column" type="VBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow"]
+[node name="Player1Column" type="VBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 
-[node name="Header" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column"]
+[node name="Header" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 text = "Player 1"
 
-[node name="P1UpRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column"]
+[node name="P1UpRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1UpRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1UpRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(60, 0)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "Up"
 
-[node name="RebindButton" type="Button" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1UpRow"]
+[node name="RebindButton" type="Button" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1UpRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 32)
 text = "W"
 
-[node name="P1DownRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column"]
+[node name="P1DownRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1DownRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1DownRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(60, 0)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "Down"
 
-[node name="RebindButton" type="Button" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1DownRow"]
+[node name="RebindButton" type="Button" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1DownRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 32)
 text = "S"
 
-[node name="Player2Column" type="VBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow"]
+[node name="Player2Column" type="VBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 
-[node name="Header" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column"]
+[node name="Header" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 text = "Player 2"
 
-[node name="P2UpRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column"]
+[node name="P2UpRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2UpRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2UpRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(60, 0)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "Up"
 
-[node name="RebindButton" type="Button" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2UpRow"]
+[node name="RebindButton" type="Button" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2UpRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 32)
 text = "Up"
 
-[node name="P2DownRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column"]
+[node name="P2DownRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2DownRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2DownRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(60, 0)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 text = "Down"
 
-[node name="RebindButton" type="Button" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2DownRow"]
+[node name="RebindButton" type="Button" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2DownRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 32)
 text = "Down"
 
-[node name="PaddleSizeRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="Spacer" type="Control" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 8)
+
+[node name="OptionsMargin" type="MarginContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="OptionsList" type="VBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PaddleSizeRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSizeRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSizeRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(180, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
 text = "Paddle Size"
 
-[node name="Slider" type="HSlider" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSizeRow"]
+[node name="Slider" type="HSlider" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSizeRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(150, 0)
 min_value = 0.5
 max_value = 2.0
 step = 0.05
 value = 1.0
 
-[node name="ValueLabel" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSizeRow"]
+[node name="ValueLabel" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSizeRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(56, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(52, 0)
+theme_override_font_sizes/font_size = 16
 text = "1.00x"
 
-[node name="PaddleSpeedRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="PaddleSpeedRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSpeedRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSpeedRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(180, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
 text = "Paddle Speed"
 
-[node name="Slider" type="HSlider" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSpeedRow"]
+[node name="Slider" type="HSlider" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSpeedRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(150, 0)
 min_value = 0.5
 max_value = 2.0
 step = 0.05
 value = 1.0
 
-[node name="ValueLabel" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSpeedRow"]
+[node name="ValueLabel" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSpeedRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(56, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(52, 0)
+theme_override_font_sizes/font_size = 16
 text = "1.00x"
 
-[node name="ResolutionRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="WinScoreRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ResolutionRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/WinScoreRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(180, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
+text = "Points to Win"
+
+[node name="Slider" type="HSlider" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/WinScoreRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 0)
+min_value = 1
+max_value = 21
+step = 1
+value = 11
+
+[node name="ValueLabel" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/WinScoreRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(52, 0)
+theme_override_font_sizes/font_size = 16
+text = "11"
+
+[node name="EndlessRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/EndlessRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
+text = "Endless Mode"
+
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/EndlessRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(150, 0)
+
+[node name="ResolutionRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/ResolutionRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
 text = "Resolution"
 
-[node name="OptionButton" type="OptionButton" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ResolutionRow"]
+[node name="OptionButton" type="OptionButton" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/ResolutionRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 0)
 
-[node name="ColorModeRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="ColorModeRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ColorModeRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/ColorModeRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(180, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
 text = "Advanced Colors"
 
-[node name="CheckButton" type="CheckButton" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/ColorModeRow"]
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/ColorModeRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 0)
 
-[node name="GameColorRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="GameColorRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/GameColorRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/GameColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(180, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
 text = "Game Color"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/GameColorRow"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/GameColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 28)
 color = Color(1, 1, 1, 1)
 
-[node name="Paddle1ColorRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="Paddle1ColorRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/Paddle1ColorRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/Paddle1ColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(180, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
 text = "Player 1 Color"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/Paddle1ColorRow"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/Paddle1ColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 28)
 color = Color(1, 1, 1, 1)
 
-[node name="Paddle2ColorRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="Paddle2ColorRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/Paddle2ColorRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/Paddle2ColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(180, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
 text = "Player 2 Color"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/Paddle2ColorRow"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/Paddle2ColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 28)
 color = Color(1, 1, 1, 1)
 
-[node name="BallColorRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="BallColorRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/BallColorRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/BallColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(180, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
 text = "Ball Color"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/BallColorRow"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/BallColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 28)
 color = Color(1, 1, 1, 1)
 
-[node name="TextColorRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="TextColorRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/TextColorRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/TextColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(180, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
 text = "Text Color"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/TextColorRow"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/TextColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 28)
 color = Color(1, 1, 1, 1)
 
-[node name="BackgroundColorRow" type="HBoxContainer" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer"]
+[node name="BackgroundColorRow" type="HBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/BackgroundColorRow"]
+[node name="Label" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/BackgroundColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(180, 0)
-theme_override_font_sizes/font_size = 18
+custom_minimum_size = Vector2(170, 0)
+theme_override_font_sizes/font_size = 16
 text = "Background Color"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/CenterContainer/Layout/VBoxContainer/BackgroundColorRow"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/BackgroundColorRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(160, 40)
+custom_minimum_size = Vector2(150, 28)
 color = Color(0.05, 0.05, 0.08, 1)
 
-[node name="PreviewColumn" type="VBoxContainer" parent="ScrollContainer/CenterContainer/Layout"]
+[node name="PreviewColumn" type="VBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout"]
 layout_mode = 2
 alignment = 1
 
-[node name="PreviewBox" type="ColorRect" parent="ScrollContainer/CenterContainer/Layout/PreviewColumn"]
+[node name="PreviewBox" type="ColorRect" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn"]
 layout_mode = 2
 size_flags_horizontal = 4
 custom_minimum_size = Vector2(220, 220)
 color = Color(0.1, 0.1, 0.14, 1)
 clip_contents = true
 
-[node name="PreviewPaddle" type="ColorRect" parent="ScrollContainer/CenterContainer/Layout/PreviewColumn/PreviewBox"]
+[node name="PreviewPaddle" type="ColorRect" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn/PreviewBox"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 60.0
@@ -313,7 +372,7 @@ offset_right = 44.0
 offset_bottom = 160.0
 color = Color(1, 1, 1, 1)
 
-[node name="PreviewPaddle2" type="ColorRect" parent="ScrollContainer/CenterContainer/Layout/PreviewColumn/PreviewBox"]
+[node name="PreviewPaddle2" type="ColorRect" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn/PreviewBox"]
 layout_mode = 0
 offset_left = 176.0
 offset_top = 60.0
@@ -321,7 +380,7 @@ offset_right = 196.0
 offset_bottom = 160.0
 color = Color(1, 1, 1, 1)
 
-[node name="PreviewBall" type="ColorRect" parent="ScrollContainer/CenterContainer/Layout/PreviewColumn/PreviewBox"]
+[node name="PreviewBall" type="ColorRect" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn/PreviewBox"]
 layout_mode = 0
 offset_left = 102.0
 offset_top = 102.0
@@ -329,7 +388,7 @@ offset_right = 118.0
 offset_bottom = 118.0
 color = Color(1, 1, 1, 1)
 
-[node name="PreviewScoreLabel" type="Label" parent="ScrollContainer/CenterContainer/Layout/PreviewColumn/PreviewBox"]
+[node name="PreviewScoreLabel" type="Label" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn/PreviewBox"]
 layout_mode = 0
 offset_left = 0.0
 offset_top = 8.0
@@ -349,17 +408,19 @@ theme_override_font_sizes/font_size = 18
 text = "Back"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1UpRow/RebindButton" to="." method="_on_p1_up_rebind_pressed"]
-[connection signal="pressed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1DownRow/RebindButton" to="." method="_on_p1_down_rebind_pressed"]
-[connection signal="pressed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2UpRow/RebindButton" to="." method="_on_p2_up_rebind_pressed"]
-[connection signal="pressed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2DownRow/RebindButton" to="." method="_on_p2_down_rebind_pressed"]
-[connection signal="value_changed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSizeRow/Slider" to="." method="_on_paddle_size_slider_value_changed"]
-[connection signal="value_changed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSpeedRow/Slider" to="." method="_on_paddle_speed_slider_value_changed"]
-[connection signal="item_selected" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/ResolutionRow/OptionButton" to="." method="_on_resolution_option_button_item_selected"]
-[connection signal="toggled" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/ColorModeRow/CheckButton" to="." method="_on_color_mode_check_button_toggled"]
-[connection signal="color_changed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/GameColorRow/ColorPickerButton" to="." method="_on_game_color_changed"]
-[connection signal="color_changed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/Paddle1ColorRow/ColorPickerButton" to="." method="_on_paddle1_color_changed"]
-[connection signal="color_changed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/Paddle2ColorRow/ColorPickerButton" to="." method="_on_paddle2_color_changed"]
-[connection signal="color_changed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/BallColorRow/ColorPickerButton" to="." method="_on_ball_color_changed"]
-[connection signal="color_changed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/TextColorRow/ColorPickerButton" to="." method="_on_text_color_changed"]
-[connection signal="color_changed" from="ScrollContainer/CenterContainer/Layout/VBoxContainer/BackgroundColorRow/ColorPickerButton" to="." method="_on_background_color_changed"]
+[connection signal="pressed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1UpRow/RebindButton" to="." method="_on_p1_up_rebind_pressed"]
+[connection signal="pressed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1DownRow/RebindButton" to="." method="_on_p1_down_rebind_pressed"]
+[connection signal="pressed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2UpRow/RebindButton" to="." method="_on_p2_up_rebind_pressed"]
+[connection signal="pressed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2DownRow/RebindButton" to="." method="_on_p2_down_rebind_pressed"]
+[connection signal="value_changed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSizeRow/Slider" to="." method="_on_paddle_size_slider_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSpeedRow/Slider" to="." method="_on_paddle_speed_slider_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/WinScoreRow/Slider" to="." method="_on_win_score_slider_value_changed"]
+[connection signal="toggled" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/EndlessRow/CheckButton" to="." method="_on_endless_check_button_toggled"]
+[connection signal="item_selected" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/ResolutionRow/OptionButton" to="." method="_on_resolution_option_button_item_selected"]
+[connection signal="toggled" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/ColorModeRow/CheckButton" to="." method="_on_color_mode_check_button_toggled"]
+[connection signal="color_changed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/GameColorRow/ColorPickerButton" to="." method="_on_game_color_changed"]
+[connection signal="color_changed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/Paddle1ColorRow/ColorPickerButton" to="." method="_on_paddle1_color_changed"]
+[connection signal="color_changed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/Paddle2ColorRow/ColorPickerButton" to="." method="_on_paddle2_color_changed"]
+[connection signal="color_changed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/BallColorRow/ColorPickerButton" to="." method="_on_ball_color_changed"]
+[connection signal="color_changed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/TextColorRow/ColorPickerButton" to="." method="_on_text_color_changed"]
+[connection signal="color_changed" from="ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/BackgroundColorRow/ColorPickerButton" to="." method="_on_background_color_changed"]

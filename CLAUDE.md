@@ -48,6 +48,9 @@ which reads `get_viewport().get_texture()` after two `process_frame` awaits — 
 autoload (not on `main.gd`) so it fires regardless of which scene is currently active (e.g. the
 title screen). `screenshots/` is gitignored — treat it as scratch output, not something to commit.
 
+Whenever a screenshot is taken this way, always send the resulting PNG to the user (e.g. via
+`SendUserFile`) so they can see it — don't just describe it in text.
+
 There is no build step, package manager, or test suite — it's a single Godot project directory.
 
 ## Parallel agent worktrees

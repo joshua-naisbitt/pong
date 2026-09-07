@@ -6,35 +6,39 @@ const ControlsScript = preload("res://scripts/controls.gd")
 const PREVIEW_BOX_HEIGHT := PaddleScript.DEFAULT_HEIGHT * ControlsScript.MAX_PADDLE_SCALE + 20.0
 const PREVIEW_BALL_SPEED := 110.0
 
-@onready var p1_up_button: Button = $ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1UpRow/RebindButton
-@onready var p1_down_button: Button = $ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1DownRow/RebindButton
-@onready var p2_up_button: Button = $ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2UpRow/RebindButton
-@onready var p2_down_button: Button = $ScrollContainer/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2DownRow/RebindButton
+@onready var p1_up_button: Button = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1UpRow/RebindButton
+@onready var p1_down_button: Button = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player1Column/P1DownRow/RebindButton
+@onready var p2_up_button: Button = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2UpRow/RebindButton
+@onready var p2_down_button: Button = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/ControlsRow/Player2Column/P2DownRow/RebindButton
 
-@onready var paddle_size_slider: HSlider = $ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSizeRow/Slider
-@onready var paddle_size_value_label: Label = $ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSizeRow/ValueLabel
-@onready var paddle_speed_slider: HSlider = $ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSpeedRow/Slider
-@onready var paddle_speed_value_label: Label = $ScrollContainer/CenterContainer/Layout/VBoxContainer/PaddleSpeedRow/ValueLabel
-@onready var resolution_option: OptionButton = $ScrollContainer/CenterContainer/Layout/VBoxContainer/ResolutionRow/OptionButton
+@onready var paddle_size_slider: HSlider = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSizeRow/Slider
+@onready var paddle_size_value_label: Label = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSizeRow/ValueLabel
+@onready var paddle_speed_slider: HSlider = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSpeedRow/Slider
+@onready var paddle_speed_value_label: Label = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/PaddleSpeedRow/ValueLabel
+@onready var win_score_row: HBoxContainer = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/WinScoreRow
+@onready var win_score_slider: HSlider = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/WinScoreRow/Slider
+@onready var win_score_value_label: Label = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/WinScoreRow/ValueLabel
+@onready var endless_toggle: CheckButton = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/EndlessRow/CheckButton
+@onready var resolution_option: OptionButton = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/ResolutionRow/OptionButton
 
-@onready var color_mode_toggle: CheckButton = $ScrollContainer/CenterContainer/Layout/VBoxContainer/ColorModeRow/CheckButton
-@onready var game_color_row: HBoxContainer = $ScrollContainer/CenterContainer/Layout/VBoxContainer/GameColorRow
-@onready var game_color_button: ColorPickerButton = $ScrollContainer/CenterContainer/Layout/VBoxContainer/GameColorRow/ColorPickerButton
-@onready var paddle1_color_row: HBoxContainer = $ScrollContainer/CenterContainer/Layout/VBoxContainer/Paddle1ColorRow
-@onready var paddle1_color_button: ColorPickerButton = $ScrollContainer/CenterContainer/Layout/VBoxContainer/Paddle1ColorRow/ColorPickerButton
-@onready var paddle2_color_row: HBoxContainer = $ScrollContainer/CenterContainer/Layout/VBoxContainer/Paddle2ColorRow
-@onready var paddle2_color_button: ColorPickerButton = $ScrollContainer/CenterContainer/Layout/VBoxContainer/Paddle2ColorRow/ColorPickerButton
-@onready var ball_color_row: HBoxContainer = $ScrollContainer/CenterContainer/Layout/VBoxContainer/BallColorRow
-@onready var ball_color_button: ColorPickerButton = $ScrollContainer/CenterContainer/Layout/VBoxContainer/BallColorRow/ColorPickerButton
-@onready var text_color_row: HBoxContainer = $ScrollContainer/CenterContainer/Layout/VBoxContainer/TextColorRow
-@onready var text_color_button: ColorPickerButton = $ScrollContainer/CenterContainer/Layout/VBoxContainer/TextColorRow/ColorPickerButton
-@onready var background_color_button: ColorPickerButton = $ScrollContainer/CenterContainer/Layout/VBoxContainer/BackgroundColorRow/ColorPickerButton
+@onready var color_mode_toggle: CheckButton = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/ColorModeRow/CheckButton
+@onready var game_color_row: HBoxContainer = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/GameColorRow
+@onready var game_color_button: ColorPickerButton = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/GameColorRow/ColorPickerButton
+@onready var paddle1_color_row: HBoxContainer = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/Paddle1ColorRow
+@onready var paddle1_color_button: ColorPickerButton = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/Paddle1ColorRow/ColorPickerButton
+@onready var paddle2_color_row: HBoxContainer = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/Paddle2ColorRow
+@onready var paddle2_color_button: ColorPickerButton = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/Paddle2ColorRow/ColorPickerButton
+@onready var ball_color_row: HBoxContainer = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/BallColorRow
+@onready var ball_color_button: ColorPickerButton = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/BallColorRow/ColorPickerButton
+@onready var text_color_row: HBoxContainer = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/TextColorRow
+@onready var text_color_button: ColorPickerButton = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/TextColorRow/ColorPickerButton
+@onready var background_color_button: ColorPickerButton = $ScrollContainer/ContentMargin/CenterContainer/Layout/VBoxContainer/OptionsMargin/OptionsList/BackgroundColorRow/ColorPickerButton
 
-@onready var preview_box: ColorRect = $ScrollContainer/CenterContainer/Layout/PreviewColumn/PreviewBox
-@onready var preview_paddle: ColorRect = $ScrollContainer/CenterContainer/Layout/PreviewColumn/PreviewBox/PreviewPaddle
-@onready var preview_paddle2: ColorRect = $ScrollContainer/CenterContainer/Layout/PreviewColumn/PreviewBox/PreviewPaddle2
-@onready var preview_ball: ColorRect = $ScrollContainer/CenterContainer/Layout/PreviewColumn/PreviewBox/PreviewBall
-@onready var preview_score_label: Label = $ScrollContainer/CenterContainer/Layout/PreviewColumn/PreviewBox/PreviewScoreLabel
+@onready var preview_box: ColorRect = $ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn/PreviewBox
+@onready var preview_paddle: ColorRect = $ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn/PreviewBox/PreviewPaddle
+@onready var preview_paddle2: ColorRect = $ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn/PreviewBox/PreviewPaddle2
+@onready var preview_ball: ColorRect = $ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn/PreviewBox/PreviewBall
+@onready var preview_score_label: Label = $ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn/PreviewBox/PreviewScoreLabel
 
 var listening_player := 0
 var listening_is_up := false
@@ -47,6 +51,10 @@ func _ready() -> void:
 	_refresh_labels()
 	paddle_size_slider.value = Controls.paddle_size_scale
 	paddle_speed_slider.value = Controls.paddle_speed_scale
+	win_score_slider.value = Controls.win_score
+	win_score_value_label.text = str(Controls.win_score)
+	endless_toggle.button_pressed = Controls.endless_mode
+	win_score_row.visible = not Controls.endless_mode
 	_update_preview_size()
 	for i in Controls.get_available_resolution_indices():
 		var resolution: Vector2i = ControlsScript.RESOLUTIONS[i]
@@ -161,6 +169,14 @@ func _on_paddle_size_slider_value_changed(value: float) -> void:
 func _on_paddle_speed_slider_value_changed(value: float) -> void:
 	Controls.set_paddle_speed_scale(value)
 	paddle_speed_value_label.text = "%.2fx" % value
+
+func _on_win_score_slider_value_changed(value: float) -> void:
+	Controls.set_win_score(int(value))
+	win_score_value_label.text = str(Controls.win_score)
+
+func _on_endless_check_button_toggled(pressed: bool) -> void:
+	Controls.set_endless_mode(pressed)
+	win_score_row.visible = not pressed
 
 func _on_resolution_option_button_item_selected(index: int) -> void:
 	Controls.set_resolution_index(resolution_option.get_item_metadata(index))
