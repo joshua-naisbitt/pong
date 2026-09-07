@@ -26,8 +26,7 @@ color = Color(1, 1, 1, 0.3)
 [node name="Paddle1" type="Node2D" parent="."]
 position = Vector2(40, 250)
 script = ExtResource("2")
-up_key = 87
-down_key = 83
+player = 1
 
 [node name="ColorRect" type="ColorRect" parent="Paddle1"]
 offset_right = 20.0
@@ -37,8 +36,7 @@ color = Color(1, 1, 1, 1)
 [node name="Paddle2" type="Node2D" parent="."]
 position = Vector2(740, 250)
 script = ExtResource("2")
-up_key = 4194320
-down_key = 4194322
+player = 2
 
 [node name="ColorRect" type="ColorRect" parent="Paddle2"]
 offset_right = 20.0
@@ -72,3 +70,26 @@ offset_right = 500.0
 offset_bottom = 60.0
 theme_override_font_sizes/font_size = 32
 text = "0"
+
+[node name="WinLabel" type="Label" parent="."]
+visible = false
+offset_left = 200.0
+offset_top = 260.0
+offset_right = 600.0
+offset_bottom = 340.0
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "Player 1 Wins!"
+
+[node name="WinSubtitleLabel" type="Label" parent="."]
+visible = false
+offset_left = 200.0
+offset_top = 340.0
+offset_right = 600.0
+offset_bottom = 370.0
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "Press ESC to exit"

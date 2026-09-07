@@ -11,13 +11,20 @@ config_version=5
 [application]
 
 config/name="Pong"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/Title.tscn"
 config/features=PackedStringArray("4.7")
+
+[autoload]
+
+Controls="*res://scripts/controls.gd"
+Screenshot="*res://scripts/screenshot.gd"
 
 [display]
 
 window/size/viewport_width=800
 window/size/viewport_height=600
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
 
 [rendering]
 

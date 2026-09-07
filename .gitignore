@@ -16,3 +16,6 @@ mono_crash.*.json
 
 # Screenshot capture output (see scripts/main.gd --screenshot= arg)
 /screenshots/
+
+# Per-agent git worktrees (see CLAUDE.md "Parallel agent worktrees")
+/.worktrees/

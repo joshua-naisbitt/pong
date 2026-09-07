@@ -1,31 +1,43 @@
 extends Node2D
 
 @export var size: float = 20.0
-@export var initial_speed: float = 300.0
+@export var initial_speed: float = 450.0
 @export var speed_increment: float = 20.0
 @export var max_speed: float = 800.0
 @export var max_bounce_angle_deg: float = 60.0
 
 @onready var hit_sound: AudioStreamPlayer = $HitSound
+@onready var color_rect: ColorRect = $ColorRect
 
 var velocity: Vector2 = Vector2.ZERO
+var stopped: bool = false
 var screen_size: Vector2 = Vector2(
 	ProjectSettings.get_setting("display/window/size/viewport_width"),
 	ProjectSettings.get_setting("display/window/size/viewport_height")
 )
 
 func _ready() -> void:
+	color_rect.color = Controls.get_effective_ball_color()
 	launch(1)
 
 func launch(direction: int) -> void:
+	stopped = false
 	position = (screen_size - Vector2(size, size)) / 2.0
 	var angle := randf_range(-0.3, 0.3)
 	velocity = Vector2(direction, 0.0).rotated(angle) * initial_speed
+
+func stop() -> void:
+	stopped = true
+	velocity = Vector2.ZERO
+	position = (screen_size - Vector2(size, size)) / 2.0
 
 func get_rect() -> Rect2:
 	return Rect2(position, Vector2(size, size))
 
 func _process(delta: float) -> void:
+	if stopped:
+		return
+
 	position += velocity * delta
 
 	if position.y <= 0.0:

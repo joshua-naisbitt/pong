@@ -43,24 +43,58 @@ mode won't work for this since it disables rendering entirely):
 ```
 flatpak-spawn --host -- godot --path /home/jjnaisbitt/Developer/pog -- --screenshot=/home/jjnaisbitt/Developer/pog/screenshots/out.png
 ```
-Handled by the `--screenshot=` arg check in `main.gd::_ready` (`_capture_screenshot_and_quit`),
-which reads `get_viewport().get_texture()` after two `process_frame` awaits. `screenshots/` is
-gitignored — treat it as scratch output, not something to commit.
+Handled by the `--screenshot=` arg check in the `Screenshot` autoload (`scripts/screenshot.gd`),
+which reads `get_viewport().get_texture()` after two `process_frame` awaits — it lives as an
+autoload (not on `main.gd`) so it fires regardless of which scene is currently active (e.g. the
+title screen). `screenshots/` is gitignored — treat it as scratch output, not something to commit.
 
 There is no build step, package manager, or test suite — it's a single Godot project directory.
 
+## Parallel agent worktrees
+
+When starting work on a new feature, create a dedicated git worktree rather than working directly
+in the main checkout, so multiple agents can work concurrently without colliding on files or
+Godot's `.godot/` cache. Branch from current `master` and place the worktree under `.worktrees/`
+(gitignored, so it never gets committed):
+
+```
+git worktree add .worktrees/<branch-name> -b <branch-name> master
+```
+
+Do the work in `.worktrees/<branch-name>`, using the same `flatpak-spawn --host --` commands above
+but with `--path /home/jjnaisbitt/Developer/pog/.worktrees/<branch-name>`. When the feature is
+merged (or abandoned), clean up:
+
+```
+git worktree remove .worktrees/<branch-name>
+git branch -d <branch-name>
+```
+
 ## Architecture
 
-- `project.godot` — engine config. `run/main_scene` points at `scenes/Main.tscn`. Viewport is
-  fixed at 800x600.
-- `scenes/Main.tscn` — the only scene. Contains both paddles, the ball, the center line/background
+- `project.godot` — engine config. `run/main_scene` points at `scenes/Title.tscn`. Viewport is
+  fixed at 800x600. Declares two autoloads: `Controls` (`scripts/controls.gd`) and `Screenshot`
+  (`scripts/screenshot.gd`).
+- `scenes/Title.tscn` — title screen (`scripts/title.gd`). Play/Settings buttons change scene to
+  `Main.tscn`/`Settings.tscn` via `get_tree().change_scene_to_file`.
+- `scenes/Settings.tscn` — control remapping screen (`scripts/settings.gd`). Four rebind buttons
+  (P1 up/down, P2 up/down) each show the current key name (`OS.get_keycode_string`); clicking one
+  enters a "listening" state and the next `_unhandled_key_input` key press is captured into that
+  binding via `Controls.set_key`. Back button returns to `Title.tscn`.
+- `scripts/controls.gd` (autoload singleton `Controls`) — owns the four key bindings (p1/p2 ×
+  up/down), defaulting to WASD for player 1 and arrow keys for player 2. Persists to
+  `user://controls.cfg` via `ConfigFile` on every change and loads it back on startup.
+  `paddle.gd` reads bindings from here rather than owning its own keys.
+- `scenes/Main.tscn` — gameplay scene. Contains both paddles, the ball, the center line/background
   visuals, and the two score labels, all as direct children of the root `Main` node.
 - `scripts/main.gd` (on the `Main` root node) — owns the score. Exposes `on_goal(scorer: int)`,
-  called by the ball when it exits the left/right edge of the screen.
+  called by the ball when it exits the left/right edge of the screen. Escape returns to
+  `Title.tscn`.
 - `scripts/paddle.gd` (on `Paddle1`/`Paddle2`) — one script shared by both paddles, distinguished
-  only by exported `up_key`/`down_key` values set per-instance in the `.tscn` (WASD for Paddle1,
-  arrow keys for Paddle2). Reads `Input.is_physical_key_pressed` directly rather than using the
-  project input map — there are no custom actions defined in `project.godot`.
+  only by an exported `player` value (1 or 2) set per-instance in the `.tscn`, used to look up that
+  player's up/down keys from the `Controls` autoload each frame. Reads
+  `Input.is_physical_key_pressed` directly rather than using the project input map — there are no
+  custom actions defined in `project.godot`.
 - `scripts/ball.gd` (on `Ball`) — owns its own velocity and does its own AABB collision math
   against `paddle.get_rect()` for both paddles each frame, and against the top/bottom screen
   edges. There are no physics bodies/collision shapes/layers anywhere in this project — paddles
@@ -72,5 +106,5 @@ There is no build step, package manager, or test suite — it's a single Godot p
   player who just conceded (see `main.gd::on_goal`).
 
 Node lookups between scripts go through `get_parent()` from the ball (to reach `main.paddle1`/
-`main.paddle2`) and `@onready var` from `main.gd` (to reach `$Paddle1`, `$Paddle2`, `$Ball`,
-`$ScoreLabel1`, `$ScoreLabel2`). If you rename nodes in `Main.tscn`, update both.
+`main.paddle2`) and `@onready var` from `main.gd`/`settings.gd` (to reach child nodes by path).
+If you rename nodes in a `.tscn`, update the corresponding script's node paths.
