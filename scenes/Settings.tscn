@@ -355,7 +355,6 @@ color = Color(0.05, 0.05, 0.08, 1)
 
 [node name="PreviewColumn" type="VBoxContainer" parent="ScrollContainer/ContentMargin/CenterContainer/Layout"]
 layout_mode = 2
-alignment = 1
 
 [node name="PreviewBox" type="ColorRect" parent="ScrollContainer/ContentMargin/CenterContainer/Layout/PreviewColumn"]
 layout_mode = 2

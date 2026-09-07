@@ -54,7 +54,7 @@ func _ready() -> void:
 	win_score_slider.value = Controls.win_score
 	win_score_value_label.text = str(Controls.win_score)
 	endless_toggle.button_pressed = Controls.endless_mode
-	win_score_row.visible = not Controls.endless_mode
+	_update_win_score_state()
 	_update_preview_size()
 	for i in Controls.get_available_resolution_indices():
 		var resolution: Vector2i = ControlsScript.RESOLUTIONS[i]
@@ -120,6 +120,11 @@ func _update_preview_size() -> void:
 	preview_paddle2.size.y = height
 	preview_paddle2.position.y = clamp(preview_paddle2.position.y, 0.0, max(0.0, PREVIEW_BOX_HEIGHT - height))
 
+func _update_win_score_state() -> void:
+	var endless := Controls.endless_mode
+	win_score_slider.editable = not endless
+	win_score_row.modulate = Color(1, 1, 1, 0.4) if endless else Color(1, 1, 1, 1)
+
 func _update_color_mode_visibility() -> void:
 	var advanced := Controls.advanced_colors
 	game_color_row.visible = not advanced
@@ -176,7 +181,7 @@ func _on_win_score_slider_value_changed(value: float) -> void:
 
 func _on_endless_check_button_toggled(pressed: bool) -> void:
 	Controls.set_endless_mode(pressed)
-	win_score_row.visible = not pressed
+	_update_win_score_state()
 
 func _on_resolution_option_button_item_selected(index: int) -> void:
 	Controls.set_resolution_index(resolution_option.get_item_metadata(index))
