@@ -137,6 +137,25 @@ func set_advanced_colors(value: bool) -> void:
 	advanced_colors = value
 	save_settings()
 
+func reset_to_defaults() -> void:
+	p1_up = KEY_W
+	p1_down = KEY_S
+	p2_up = KEY_UP
+	p2_down = KEY_DOWN
+	paddle_size_scale = 1.0
+	paddle_speed_scale = 1.0
+	resolution_index = 0
+	win_score = 11
+	endless_mode = false
+	paddle1_color = Color(1, 1, 1, 1)
+	paddle2_color = Color(1, 1, 1, 1)
+	ball_color = Color(1, 1, 1, 1)
+	background_color = Color(0.05, 0.05, 0.08, 1)
+	text_color = Color(1, 1, 1, 1)
+	advanced_colors = false
+	apply_resolution()
+	save_settings()
+
 func get_effective_paddle_color(player: int) -> Color:
 	if not advanced_colors:
 		return paddle1_color

@@ -48,6 +48,13 @@ var preview_direction2 := -1.0
 var preview_ball_velocity := Vector2(1, 1).normalized() * PREVIEW_BALL_SPEED
 
 func _ready() -> void:
+	for i in Controls.get_available_resolution_indices():
+		var resolution: Vector2i = ControlsScript.RESOLUTIONS[i]
+		resolution_option.add_item("%dx%d" % [resolution.x, resolution.y])
+		resolution_option.set_item_metadata(resolution_option.item_count - 1, i)
+	_refresh_from_controls()
+
+func _refresh_from_controls() -> void:
 	_refresh_labels()
 	paddle_size_slider.value = Controls.paddle_size_scale
 	paddle_speed_slider.value = Controls.paddle_speed_scale
@@ -56,12 +63,10 @@ func _ready() -> void:
 	endless_toggle.button_pressed = Controls.endless_mode
 	_update_win_score_state()
 	_update_preview_size()
-	for i in Controls.get_available_resolution_indices():
-		var resolution: Vector2i = ControlsScript.RESOLUTIONS[i]
-		resolution_option.add_item("%dx%d" % [resolution.x, resolution.y])
-		resolution_option.set_item_metadata(resolution_option.item_count - 1, i)
-		if i == Controls.resolution_index:
-			resolution_option.selected = resolution_option.item_count - 1
+	for i in resolution_option.item_count:
+		if resolution_option.get_item_metadata(i) == Controls.resolution_index:
+			resolution_option.selected = i
+			break
 	color_mode_toggle.button_pressed = Controls.advanced_colors
 	game_color_button.color = Controls.paddle1_color
 	paddle1_color_button.color = Controls.paddle1_color
@@ -225,3 +230,7 @@ func _on_background_color_changed(color: Color) -> void:
 
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Title.tscn")
+
+func _on_reset_pressed() -> void:
+	Controls.reset_to_defaults()
+	_refresh_from_controls()
