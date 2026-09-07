@@ -17,6 +17,10 @@ var p1_down: Key = KEY_S
 var p2_up: Key = KEY_UP
 var p2_down: Key = KEY_DOWN
 
+var p1_is_ai: bool = false
+var p2_is_ai: bool = false
+var ai_difficulty: String = "medium"
+
 var paddle_size_scale: float = 1.0
 var paddle_speed_scale: float = 1.0
 var resolution_index: int = 0
@@ -37,6 +41,13 @@ func get_up_key(player: int) -> Key:
 
 func get_down_key(player: int) -> Key:
 	return p1_down if player == 1 else p2_down
+
+func set_game_mode(p1_ai: bool, p2_ai: bool) -> void:
+	p1_is_ai = p1_ai
+	p2_is_ai = p2_ai
+
+func set_ai_difficulty(value: String) -> void:
+	ai_difficulty = value
 
 func set_key(player: int, is_up: bool, key: Key) -> void:
 	if player == 1:
