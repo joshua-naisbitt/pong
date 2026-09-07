@@ -3,8 +3,9 @@
 ; since the parameters that go here are not all obvious.
 ;
 ; Format:
-;   [section] ; section goes to subsections like [section.subsection]
-;
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
