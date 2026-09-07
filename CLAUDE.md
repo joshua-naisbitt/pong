@@ -38,6 +38,15 @@ flatpak-spawn --host -- godot --headless --path /home/jjnaisbitt/Developer/pog -
 Any `SCRIPT ERROR:` or `ERROR:` lines in the output indicate a problem; clean output means the
 scene loaded and ran without exceptions.
 
+Screenshot (opens a real window briefly, renders a couple frames, saves a PNG, quits — headless
+mode won't work for this since it disables rendering entirely):
+```
+flatpak-spawn --host -- godot --path /home/jjnaisbitt/Developer/pog -- --screenshot=/home/jjnaisbitt/Developer/pog/screenshots/out.png
+```
+Handled by the `--screenshot=` arg check in `main.gd::_ready` (`_capture_screenshot_and_quit`),
+which reads `get_viewport().get_texture()` after two `process_frame` awaits. `screenshots/` is
+gitignored — treat it as scratch output, not something to commit.
+
 There is no build step, package manager, or test suite — it's a single Godot project directory.
 
 ## Architecture

@@ -6,6 +6,8 @@ extends Node2D
 @export var up_key: Key = KEY_W
 @export var down_key: Key = KEY_S
 
+var screen_height: float = ProjectSettings.get_setting("display/window/size/viewport_height")
+
 func _process(delta: float) -> void:
 	var direction := 0.0
 	if Input.is_physical_key_pressed(up_key):
@@ -14,8 +16,6 @@ func _process(delta: float) -> void:
 		direction += 1.0
 
 	position.y += direction * speed * delta
-
-	var screen_height := get_viewport_rect().size.y
 	position.y = clamp(position.y, 0.0, screen_height - height)
 
 func get_rect() -> Rect2:

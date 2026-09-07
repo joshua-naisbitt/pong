@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/paddle.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/ball.gd" id="3"]
+[ext_resource type="AudioStream" path="res://assets/sfx/paddle_hit.wav" id="4"]
+[ext_resource type="AudioStream" path="res://assets/sfx/score.wav" id="5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1")
+
+[node name="ScoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 800.0
@@ -47,6 +52,9 @@ script = ExtResource("3")
 offset_right = 20.0
 offset_bottom = 20.0
 color = Color(1, 1, 1, 1)
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Ball"]
+stream = ExtResource("4")
 
 [node name="ScoreLabel1" type="Label" parent="."]
 offset_left = 300.0

@@ -6,11 +6,15 @@ extends Node2D
 @export var max_speed: float = 800.0
 @export var max_bounce_angle_deg: float = 60.0
 
+@onready var hit_sound: AudioStreamPlayer = $HitSound
+
 var velocity: Vector2 = Vector2.ZERO
-var screen_size: Vector2
+var screen_size: Vector2 = Vector2(
+	ProjectSettings.get_setting("display/window/size/viewport_width"),
+	ProjectSettings.get_setting("display/window/size/viewport_height")
+)
 
 func _ready() -> void:
-	screen_size = get_viewport_rect().size
 	launch(1)
 
 func launch(direction: int) -> void:
@@ -37,6 +41,7 @@ func _process(delta: float) -> void:
 		if get_rect().intersects(paddle_rect):
 			var from_left := velocity.x < 0.0
 			position.x = paddle_rect.position.x + (paddle_rect.size.x if from_left else -size)
+			hit_sound.play()
 
 			var ball_center_y := position.y + size / 2.0
 			var paddle_center_y := paddle_rect.position.y + paddle_rect.size.y / 2.0
